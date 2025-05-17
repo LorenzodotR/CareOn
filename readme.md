@@ -11,20 +11,6 @@ O Task Manager é uma aplicação SPA (Single Page Application) que permite ao u
 - Marcar tarefas como concluídas
 - Excluir tarefas
 
-## Tecnologias Utilizadas
-
-### Frontend
-- **Angular 14+**: Framework para desenvolvimento do SPA
-- **Angular Material**: Biblioteca de componentes UI
-- **TypeScript**: Linguagem de programação
-- **RxJS**: Biblioteca para programação reativa
-- **Reactive Forms**: Para manipulação de formulários
-
-### Backend
-- **ASP.NET Core 6+**: Framework para desenvolvimento da API RESTful
-- **In-memory storage**: Armazenamento de dados em memória
-- **C#**: Linguagem de programação
-
 ## Estrutura do Projeto Frontend
 
 ```
@@ -92,7 +78,7 @@ src/
    ```
    dotnet run
    ```
-3. A API estará disponível em `https://localhost:7001`
+3. A API estará disponível em `https://localhost:8080`
 
 ## Endpoints da API
 
@@ -114,38 +100,3 @@ interface Task {
   completed: boolean;
 }
 ```
-
-## Boas Práticas Implementadas
-
-### Frontend
-- **Componentização**: Componentes reutilizáveis e coesos
-- **Formulários reativos**: Para validação e manipulação de dados
-- **Serviços**: Encapsulamento da lógica de comunicação com a API
-- **Tratamento de erros**: Feedback visual para o usuário
-- **Responsividade**: Interface adaptável a diferentes dispositivos
-- **Lazy loading**: Carregamento sob demanda dos componentes
-- **Modularização**: Separação clara de responsabilidades
-
-### Backend
-- **RESTful API**: Seguindo os princípios REST
-- **Injeção de dependência**: Para acoplamento fraco entre componentes
-- **Separação em camadas**: Controllers, Services, Models
-- **DTOs**: Para transferência de dados entre camadas
-- **Validação**: Garantindo integridade dos dados
-
-## Melhorias Futuras
-
-- Adicionar autenticação de usuários
-- Implementar categorização de tarefas
-- Adicionar datas de prazo para tarefas
-- Implementar pesquisa e filtros
-- Adicionar testes unitários e de integração
-- Migrar para um banco de dados persistente
-
-## Autor
-
-[Seu Nome]
-
-## Licença
-
-Este projeto está licenciado sob a [MIT License](LICENSE).
