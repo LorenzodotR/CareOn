@@ -34,3 +34,4 @@ C:\Users\l.ribeiro\Documents\Lorenzo\repos\CareOn 2\Backend\Tasks\Tasks.Api\obj\
 C:\Users\l.ribeiro\Documents\Lorenzo\repos\CareOn 2\Backend\Tasks\Tasks.Api\obj\Debug\net9.0\Tasks.Api.pdb
 C:\Users\l.ribeiro\Documents\Lorenzo\repos\CareOn 2\Backend\Tasks\Tasks.Api\obj\Debug\net9.0\Tasks.Api.genruntimeconfig.cache
 C:\Users\l.ribeiro\Documents\Lorenzo\repos\CareOn 2\Backend\Tasks\Tasks.Api\obj\Debug\net9.0\ref\Tasks.Api.dll
+C:\Users\l.ribeiro\Documents\Lorenzo\repos\CareOn 2\Backend\Tasks\Tasks.Api\obj\Debug\net9.0\Tasks.Api.sourcelink.json

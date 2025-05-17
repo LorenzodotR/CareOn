@@ -7,5 +7,24 @@
 }
 
 mat-toolbar {
+  background: linear-gradient(90deg, #4a90e2, #50e3c2);
   border-radius: 25px;
+}
+
+.description-header,
+.description-cell {
+  white-space: normal;
+  word-wrap: break-word;
+  word-break: break-all;
+}
+
+.add-task-button {
+  background: linear-gradient(90deg, #4a90e2, #50e3c2);
+  color: white;
+  border-radius: 25px;
+  padding: 10px 20px;
+}
+
+.container {
+  padding-top: 30px;
 }

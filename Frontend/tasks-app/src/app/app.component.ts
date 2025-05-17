@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { MaterialModule } from './modules/material/material.module';
-import { CommonModule } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 import { TaskDialogComponent } from './components/task-dialog/task-dialog.component';
 import { TaskService } from './modules/shared/services/task.service';
 import { Task } from './modules/shared/models/task.model';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',

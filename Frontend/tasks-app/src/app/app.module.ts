@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { MaterialModule } from './modules/material/material.module';
 import { AppRoutingModule } from './app.routes';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { GridModule } from '@progress/kendo-angular-grid';
 
 
 
@@ -9,9 +10,10 @@ import { AppRoutingModule } from './app.routes';
   declarations: [
   ],
   imports: [
+    BrowserAnimationsModule,
+    GridModule,
     MaterialModule,
-    AppRoutingModule,
-    CommonModule
+    AppRoutingModule
   ]
 })
 export class AppModule { }
