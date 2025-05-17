@@ -1,0 +1,67 @@
+h2[mat-dialog-title] {
+    margin: 0;
+    padding: 16px 24px;
+    background: linear-gradient(90deg, #4a90e2, #50e3c2);
+    color: #fff;
+    font-size: 1.25rem;
+    font-weight: 500;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+mat-dialog-content {
+    padding: 24px;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: rgba(0, 0, 0, 0.87);
+}
+
+mat-dialog-actions {
+    display: flex;
+    justify-content: flex-end;
+    padding: 8px 24px 16px;
+    
+    button {
+        min-width: 90px;
+        margin-left: 8px;
+        font-weight: 500;
+        transition: transform 0.2s ease;
+        
+        &:hover {
+            transform: translateY(-2px);
+        }
+    }
+}
+
+/* Estilos responsivos para dispositivos móveis */
+@media (max-width: 599px) {
+    h2[mat-dialog-title] {
+        padding: 12px 16px;
+        font-size: 1.1rem;
+    }
+    
+    mat-dialog-content {
+        padding: 16px;
+        font-size: 0.95rem;
+    }
+    
+    mat-dialog-actions {
+        padding: 8px 16px 12px;
+        
+        button {
+            min-width: 80px;
+            margin-left: 6px;
+            padding: 4px 10px;
+        }
+    }
+}
+
+/* Ajustes para tema escuro */
+:host-context(body.dark-theme) {
+    h2[mat-dialog-title] {
+        background: linear-gradient(90deg, #3a80d2, #40d3b2);
+    }
+    
+    mat-dialog-content {
+        color: rgba(255, 255, 255, 0.87);
+    }
+}

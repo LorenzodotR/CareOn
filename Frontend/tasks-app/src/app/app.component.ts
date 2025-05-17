@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { MaterialModule } from './modules/material/material.module';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -7,6 +7,9 @@ import { TaskDialogComponent } from './components/task-dialog/task-dialog.compon
 import { TaskService } from './modules/shared/services/task.service';
 import { Task } from './modules/shared/models/task.model';
 import { CommonModule } from '@angular/common';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -15,22 +18,47 @@ import { CommonModule } from '@angular/common';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-export class AppComponent {
+export class AppComponent implements OnInit, OnDestroy {
   title = 'Gerenciador de Tarefas';
   isDarkTheme = false;
+  isMobile = false;
   tasks: Task[] = [];
   displayedColumns: string[] = ['id', 'title', 'description', 'isCompleted', 'actions'];
   isLoading = true;
+  private destroy$ = new Subject<void>();
 
   constructor(
     private taskService: TaskService,
     private dialog: MatDialog,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private breakpointObserver: BreakpointObserver
   ) { }
 
   ngOnInit(): void {
     this.loadTasks();
+    this.observeScreenSize();
+
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+      this.isDarkTheme = savedTheme === 'dark';
+      this.applyTheme();
+    }
+
     console.log('TaskListComponent initialized');
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
+
+  observeScreenSize(): void {
+    this.breakpointObserver
+      .observe([Breakpoints.XSmall, Breakpoints.Small])
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(result => {
+        this.isMobile = result.matches;
+      });
   }
 
   loadTasks(): void {
@@ -69,8 +97,10 @@ export class AppComponent {
   }
 
   openEditDialog(task: Task): void {
+    const dialogWidth = this.isMobile ? '95%' : '500px';
+
     const dialogRef = this.dialog.open(TaskDialogComponent, {
-      width: '500px',
+      width: dialogWidth,
       data: { task, isEdit: true }
     });
 
@@ -94,8 +124,10 @@ export class AppComponent {
   }
 
   openAddDialog(): void {
+    const dialogWidth = this.isMobile ? '95%' : '500px';
+
     const dialogRef = this.dialog.open(TaskDialogComponent, {
-      width: '500px',
+      width: dialogWidth,
       data: { task: {}, isEdit: false }
     });
 
@@ -116,8 +148,10 @@ export class AppComponent {
   }
 
   openConfirmDialog(id: number): void {
+    const dialogWidth = this.isMobile ? '95%' : '350px';
+
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
-      width: '350px',
+      width: dialogWidth,
       data: { message: 'Tem certeza que deseja excluir esta tarefa?' }
     });
 
@@ -152,6 +186,12 @@ export class AppComponent {
 
   toggleTheme(): void {
     this.isDarkTheme = !this.isDarkTheme;
+    this.applyTheme();
+
+    localStorage.setItem('theme', this.isDarkTheme ? 'dark' : 'light');
+  }
+
+  private applyTheme(): void {
     const theme = this.isDarkTheme ? 'dark-theme' : 'light-theme';
     document.body.classList.toggle('dark-theme', this.isDarkTheme);
     document.body.classList.toggle('light-theme', !this.isDarkTheme);
