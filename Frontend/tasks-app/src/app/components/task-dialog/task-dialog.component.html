@@ -1,0 +1,37 @@
+<h2 mat-dialog-title>{{ dialogTitle }}</h2>
+
+<form [formGroup]="taskForm" (ngSubmit)="onSave()">
+  <mat-dialog-content>
+    <div class="form-container">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Título</mat-label>
+        <input matInput formControlName="title" placeholder="Título da tarefa" required>
+        <mat-error *ngIf="taskForm.get('title')?.hasError('required')">
+          O título é obrigatório
+        </mat-error>
+        <mat-error *ngIf="taskForm.get('title')?.hasError('maxlength')">
+          O título deve ter no máximo 100 caracteres
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Descrição</mat-label>
+        <textarea matInput formControlName="description" placeholder="Descrição da tarefa" rows="4"></textarea>
+        <mat-error *ngIf="taskForm.get('description')?.hasError('maxlength')">
+          A descrição deve ter no máximo 500 caracteres
+        </mat-error>
+      </mat-form-field>
+
+      <mat-checkbox formControlName="completed" color="primary" *ngIf="data.isEdit">
+        Tarefa concluída
+      </mat-checkbox>
+    </div>
+  </mat-dialog-content>
+
+  <mat-dialog-actions align="end">
+    <button mat-button type="button" (click)="onCancel()">Cancelar</button>
+    <button mat-raised-button color="primary" type="submit" [disabled]="taskForm.invalid">
+      {{ data.isEdit ? 'Salvar' : 'Adicionar' }}
+    </button>
+  </mat-dialog-actions>
+</form>

@@ -1,0 +1,86 @@
+:host ::ng-deep .custom-dialog-container {
+    font-family: 'Roboto', sans-serif;
+    max-width: 600px;
+    border-radius: 12px !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    padding: 0;
+}
+
+h2[mat-dialog-title] {
+    margin: 0;
+    padding: 16px 24px;
+    background: linear-gradient(90deg, #4a90e2, #50e3c2);
+    color: #fff;
+    font-size: 1.25rem;
+    font-weight: 500;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+mat-dialog-content {
+    background-color: #fafafa;
+    padding: 24px 32px;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.full-width {
+    width: 100%;
+}
+
+:host ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+    border-radius: 25px;
+}
+
+:host ::ng-deep .mat-form-field-label {
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #333;
+}
+
+:host ::ng-deep .mat-input-element {
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.95rem;
+    padding: 8px 12px;
+    border-radius: 15px;
+    background-color: #fff;
+}
+
+:host ::ng-deep textarea.mat-input-element {
+    min-height: 120px;
+    resize: vertical;
+    border-radius: 15px;
+}
+
+:host ::ng-deep .mat-checkbox-label {
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.9rem;
+    color: #333;
+    margin-top: 4px;
+}
+
+mat-dialog-actions {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 16px 32px;
+    background-color: #fff;
+    border-top: 1px solid rgba(0, 0, 0, 0.12);
+
+    button {
+        min-width: 96px;
+        margin-left: 12px;
+        text-transform: uppercase;
+        font-weight: 600;
+        transition: transform 0.2s ease;
+
+        &:hover {
+            transform: translateY(-2px);
+        }
+    }
+}
