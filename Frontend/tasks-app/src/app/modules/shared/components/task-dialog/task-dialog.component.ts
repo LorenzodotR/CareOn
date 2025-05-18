@@ -1,12 +1,12 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Task } from '../../modules/shared/models/task.model';
-import { MaterialModule } from '../../modules/material/material.module';
 import { CommonModule } from '@angular/common';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
+import { MaterialModule } from '../../../material/material.module';
+import { Task } from '../../models/task.model';
 
 export interface TaskDialogData {
   task?: Task;
@@ -52,7 +52,6 @@ export class TaskDialogComponent implements OnInit {
       });
     }
     
-    // Observar mudanças de tamanho de tela
     this.breakpointObserver
       .observe([Breakpoints.XSmall])
       .pipe(takeUntil(this.destroy$))
@@ -70,7 +69,6 @@ export class TaskDialogComponent implements OnInit {
   private adjustDialogSize(): void {
     if (this.isMobile) {
       this.dialogRef.updateSize('100%', '100%');
-      // Adicionar classe para estilo fullscreen em mobile
       this.dialogRef.addPanelClass('fullscreen-mobile-dialog');
     } else {
       this.dialogRef.updateSize('500px', '');
@@ -82,7 +80,6 @@ export class TaskDialogComponent implements OnInit {
     if (this.taskForm.valid) {
       const formValues = this.taskForm.value;
       
-      // Preparar os dados para API usando a nomenclatura correta
       const taskData = {
         id: formValues.id,
         title: formValues.title,

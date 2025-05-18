@@ -2,14 +2,14 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { MaterialModule } from './modules/material/material.module';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
-import { TaskDialogComponent } from './components/task-dialog/task-dialog.component';
 import { TaskService } from './modules/shared/services/task.service';
 import { Task } from './modules/shared/models/task.model';
 import { CommonModule } from '@angular/common';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { TaskDialogComponent } from './modules/shared/components/task-dialog/task-dialog.component';
+import { ConfirmDialogComponent } from './modules/shared/components/confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'app-root',

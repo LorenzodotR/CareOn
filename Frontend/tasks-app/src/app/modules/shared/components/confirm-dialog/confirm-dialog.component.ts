@@ -1,10 +1,10 @@
 import { Component, Inject, OnInit, OnDestroy } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { MaterialModule } from '../../modules/material/material.module';
 import { CommonModule } from '@angular/common';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { MaterialModule } from '../../../material/material.module';
 
 export interface ConfirmDialogData {
   title: string;
@@ -31,7 +31,6 @@ export class ConfirmDialogComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-    // Definir valores padrão se não forem fornecidos
     if (!this.data.title) {
       this.data.title = 'Confirmação';
     }
@@ -44,7 +43,6 @@ export class ConfirmDialogComponent implements OnInit, OnDestroy {
       this.data.cancelButtonText = 'Cancelar';
     }
     
-    // Observar mudanças de tamanho de tela
     this.breakpointObserver
       .observe([Breakpoints.XSmall])
       .pipe(takeUntil(this.destroy$))
